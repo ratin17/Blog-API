@@ -3,4 +3,11 @@ from django.db import models
 
 
 class CustomUser(AbstractUser):
-    name = models.CharField(null=True, blank=True, max_length=100)
+    
+    USER_TYPE_CHOICES = (
+        ('admin', 'Admin'),
+        ('editor', 'Editor'),
+        ('viewer', 'Viewer'),
+    )
+    
+    user_type = models.CharField(max_length=10, choices=USER_TYPE_CHOICES)
