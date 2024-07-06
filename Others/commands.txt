@@ -1,5 +1,4 @@
 
-
 > python -m venv .venv
 > .venv\Scripts\Activate.ps1
 (.venv) > python -m pip install django~=4.0.0
@@ -21,13 +20,41 @@ python manage.py makemigrations posts
 
 ----------
 
-python -m pip install djangorestframework
+python -m pip install djangorestframework~=3.13.0
+
+*************
+REST_FRAMEWORK = {
+    
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+    
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+    ],
+    
+}
+*************
+
+
 -
-python -m pip install django-cors-headers
+python -m pip install django-cors-headers~=3.10.0
+
+****
+
+CORS_ORIGIN_WHITELIST = (
+"http://localhost:3000",
+"http://localhost:8000",
+)
+
+
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
+
+*****
 -
 python -m pip install dj-rest-auth
 -
-python -m pip install django-allauth
+python -m pip install django-allauth~=0.48.0
+
 pip install requests
-
-
